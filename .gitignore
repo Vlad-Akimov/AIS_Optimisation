@@ -1,0 +1,23 @@
+# OS
+Thumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# Python (если будешь использовать)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node (если будешь использовать)
+node_modules/
+
+# Секреты
+.env
+.env.*
+*.key
+*.pem
+secrets/
