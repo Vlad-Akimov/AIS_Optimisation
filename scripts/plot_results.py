@@ -55,7 +55,7 @@ def filter_data(data: Dict[str, List], **criteria) -> Dict[str, List]:
 
 
 def fmt_value(param: str, v: float) -> str:
-    """Подпись значения параметра: n_c — целое, alpha — 2 знака."""
+    """Подпись значения параметра: n_c - целое, alpha - 2 знака."""
     return f"{int(v)}" if param == "n_c" else f"{v:.2f}"
 
 

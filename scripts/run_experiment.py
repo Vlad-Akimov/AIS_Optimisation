@@ -17,7 +17,7 @@ from experiment import run_multistart, aggregate
 
 # --- RS для baseline (из раздела 1.2.1 книги) ---
 def random_search(test_func: TestFunction, n_evals: int, seed: int) -> float:
-    """Простейший случайный поиск — baseline."""
+    """Простейший случайный поиск - baseline."""
     rng = np.random.default_rng(seed)
     best_f = np.inf
     for _ in range(n_evals):

@@ -28,7 +28,7 @@ def run_multistart(
     n_runs: int = 30,
     seed_base: int = 0,
 ) -> list[RunMetrics]:
-    """n_runs запусков с разными seed — методика мультистарта (стр. 12 книги)."""
+    """n_runs запусков с разными seed - методика мультистарта (стр. 12 книги)."""
     results: list[RunMetrics] = []
     for r in range(n_runs):
         cfg_dict = asdict(config)

@@ -16,16 +16,16 @@ if TYPE_CHECKING:
 class AISConfig:
     """Параметры алгоритма (стр. 202 книги)."""
     population_size: int = 50       # |S^b|
-    n_best: int = 10                # n_b — лучших для клонирования
-    n_clones: int = 100             # n_c — клонов на одно антитело
-    n_keep_after_mutation: int = 5  # n_d — лучших клонов после мутации
+    n_best: int = 10                # n_b - лучших для клонирования
+    n_clones: int = 100             # n_c - клонов на одно антитело
+    n_keep_after_mutation: int = 5  # n_d - лучших клонов после мутации
     alpha: float = 0.04             # коэффициент мутации
     stagnation_limit: int = 20      # delta_t
     max_iterations: int = 10_000    # страховка от бесконечного цикла
     seed: int | None = None
 
     def __post_init__(self) -> None:
-        """Валидация параметров — чтобы ошибки ловились сразу."""
+        """Валидация параметров - чтобы ошибки ловились сразу."""
         if self.population_size <= 0:
             raise ValueError("population_size must be > 0")
         if not (0 < self.n_best <= self.population_size):
@@ -47,8 +47,8 @@ class AISResult:
     """Результат одного запуска."""
     x_best: np.ndarray
     f_best: float
-    n_iterations: int       # t_end — номер итерации стагнации
-    n_evaluations: int      # n_f — число вычислений функции
+    n_iterations: int       # t_end - номер итерации стагнации
+    n_evaluations: int      # n_f - число вычислений функции
     history: list[float] = field(default_factory=list)
 
 
@@ -66,7 +66,7 @@ class ImmuneNetworkOptimizer:
         self.test_func = test_func
         self.dim = test_func.dim
 
-        # Извлекаем границы (для наших функций — единые для всех координат)
+        # Извлекаем границы (для наших функций - единые для всех координат)
         bounds = test_func.info.bounds
         if isinstance(bounds, tuple):
             self.lo, self.hi = bounds

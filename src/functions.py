@@ -1,6 +1,6 @@
 """
 Тестовые функции из Приложения Б книги Карпенко.
-Все функции — для МИНИМИЗАЦИИ.
+Все функции - для МИНИМИЗАЦИИ.
 """
 from __future__ import annotations
 
@@ -9,10 +9,6 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from typing import List, Tuple, Optional, Union
 
-
-# ============================================================
-# Базовый класс и метаданные
-# ============================================================
 
 @dataclass
 class FunctionInfo:
@@ -44,7 +40,6 @@ class TestFunction(ABC):
         """Построение метаданных функции."""
         ...
 
-    # ---------- вспомогательные методы ----------
 
     def _validate_dim(self) -> None:
         if self.info.dim is not None and self.dim != self.info.dim:
@@ -92,10 +87,6 @@ class TestFunction(ABC):
         X = np.asarray(X)
         return float(min(np.linalg.norm(X - x_opt) for x_opt in self.info.x_star))
 
-
-# ============================================================
-# Конкретные функции
-# ============================================================
 
 class RosenbrockFunction(TestFunction):
     """
@@ -153,7 +144,7 @@ class HimmelblauFunction(TestFunction):
             bounds=(-6.0, 6.0),
             f_star=0.0,
             x_star=self.OPTIMA.copy(),
-            description="4 одинаковых глобальных минимума — проверяет способность ИИС находить несколько решений",
+            description="4 одинаковых глобальных минимума - проверяет способность ИИС находить несколько решений",
         )
 
 
@@ -164,7 +155,7 @@ class RastriginFunction(TestFunction):
 
     Область поиска: x_i ∈ [-5.12; 5.12]
     Глобальный минимум: f* = 0 при x_i = 0 для всех i.
-    Сильная мультимодальность — много локальных минимумов.
+    Сильная мультимодальность - много локальных минимумов.
     """
 
     def __call__(self, X: np.ndarray) -> float:
@@ -180,13 +171,9 @@ class RastriginFunction(TestFunction):
             bounds=(-5.12, 5.12),
             f_star=0.0,
             x_star=[np.zeros(self.dim)],
-            description="Сильно мультимодальная функция — проверяет способность не застревать в локальных минимумах",
+            description="Сильно мультимодальная функция - проверяет способность не застревать в локальных минимумах",
         )
 
-
-# ============================================================
-# Реестр функций (вместо if-elif-else)
-# ============================================================
 
 FUNCTION_REGISTRY = {
     "rosenbrock": RosenbrockFunction,
